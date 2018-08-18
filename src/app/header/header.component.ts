@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
 
   keyword = '';
 
-  highlightTitle = false;
+  isHighlight = false;
   fontSize = 24;
 
   constructor(public articlesService: ArticlesService) { }
@@ -29,7 +29,10 @@ export class HeaderComponent implements OnInit {
   // }
   buttonClick($event) {
     this.articlesService.searchArticles(this.keyword);
+    this.isHighlight = !this.isHighlight;
+    this.fontSize += 2;
     ++this.count;
+    console.log(this.keyword);
     console.log(this.count);
   }
 }

@@ -4,7 +4,6 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'filterArticle'
 })
 export class FilterArticlePipe implements PipeTransform {
-
   transform(articles: any[], keyword?: any): any {
     if (articles && keyword) {
       return articles.filter(article => article.title.indexOf(keyword) !== -1);
@@ -12,5 +11,4 @@ export class FilterArticlePipe implements PipeTransform {
       return articles;
     }
   }
-
 }

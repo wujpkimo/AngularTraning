@@ -7,20 +7,19 @@ import { ArticlesService } from '../articles.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
   count: 0;
 
-  @Output() keywordChange = new EventEmitter<string>();
+  @Output()
+  keywordChange = new EventEmitter<string>();
 
   keyword = '';
 
   isHighlight = false;
   fontSize = 24;
 
-  constructor(public articlesService: ArticlesService) { }
+  constructor(public articlesService: ArticlesService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   // search($event) {
   //   console.log($event);

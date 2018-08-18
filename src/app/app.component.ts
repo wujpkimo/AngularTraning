@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticlesService } from './articles.service';
 import { Observable } from 'rxjs';
+import { Articles } from './article';
 
 @Component({
   selector: 'app-root',
@@ -15,12 +16,14 @@ export class AppComponent implements OnInit {
   // get list() {
   //   return this.articlesService.list;
   // }
-  list$: Observable<any[]>;
+  articles: Articles;
+  list$: Observable<Articles[]>;
 
   get keyword() {
     return this.articlesService.keyword;
   }
 
+  // 建構子
   constructor(public articlesService: ArticlesService) {
     // this.list = this.articlesService.list;
   }
@@ -29,5 +32,4 @@ export class AppComponent implements OnInit {
     // this.articlesService.loadArticles();
     this.list$ = this.articlesService.getArticles();
   }
-
 }

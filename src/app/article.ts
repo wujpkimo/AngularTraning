@@ -1,11 +1,23 @@
-export interface Article {
-  title: string;
-  description: string;
-  favoritesCount: number;
-  createdAt: Date;
-  author: Author;
+export interface Articles {
+  articles: Article[];
 }
 
-class Author {
+export interface Article {
+  title: string;
+  slug: string;
+  body: string;
+  createdAt: string;
+  updatedAt: string;
+  tagList: any[];
+  description: string;
+  author: Author;
+  favorited: boolean;
+  favoritesCount: number;
+}
+
+interface Author {
   username: string;
+  bio?: any;
+  image: string;
+  following: boolean;
 }

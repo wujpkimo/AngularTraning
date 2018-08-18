@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Articles } from './article';
 
 @Injectable({
   providedIn: 'root'
@@ -75,18 +76,27 @@ export class ArticlesService {
 
   constructor(private httpClient: HttpClient) {}
 
+  // 以同步方式取得資料
   loadArticles() {
     this.httpClient
       .get('https://conduit.productionready.io/api/articles')
-      .subscribe((response: any) => {
-        this.list = response.articles;
+      .subscribe((data: Articles) => {
+        this.list = data.articles;
       });
   }
 
+  // 以同步方式取得資料，包含pipe filter
+  // loadArticles() {
+  //   this.httpClient
+  //     .get('https://conduit.productionready.io/api/articles')
+  //     .pipe(map((response: any) => response.articles));
+  // }
+
+  // 以非同步方式取回資料，包含pipe filter
   getArticles(): Observable<any[]> {
     return this.httpClient
       .get('https://conduit.productionready.io/api/articles')
-      .pipe(map((response: any) => response.articles));
+      .pipe(map((data: Articles) => data.articles));
   }
 
   // searchArticles($event) {
